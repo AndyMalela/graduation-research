@@ -1,0 +1,2 @@
+{"created_at_ms":1775721936602,"session_id":"session-1775721936602-0","type":"session_meta","updated_at_ms":1775721936602,"version":1}
+{"message":{"blocks":[{"text":"echo hello","type":"text"}],"role":"user"},"type":"message"}

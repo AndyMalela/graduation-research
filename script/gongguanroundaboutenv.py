@@ -196,6 +196,11 @@ class GongguanRoundaboutEnv(gym.Env):
         self._global_step += 1
         self._step_count += 1
 
+        print(f"🤖 AI chose Action: {action}")
+        print(f"👀 AI observed State (first 5 values): {obs[:5]}")
+        print(f"💰 Environment gave Reward: {reward}")
+        print("-" * 30)
+
         return self._compute_rewards_and_obs(now)
 
     def _compute_rewards_and_obs(self, now):
