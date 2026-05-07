@@ -7,6 +7,7 @@ Can be directly imported and called in training scripts.
 
 import os
 import random
+from pathlib import Path
 
 VTYPE_DEFINITIONS = """<vType id="car" vClass="passenger" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="13.9"/>
 <vType id="motorcycle" vClass="motorcycle" accel="3.0" decel="5.0" sigma="0.5" length="2.0" maxSpeed="14.0"/>
@@ -64,7 +65,7 @@ def generate_training_route_with_variation(
     noise_level=0.1
 ):
     if path is None:
-        path = f"cfg/train_flow_{seed:08x}.rou.xml"
+        path = str(Path(__file__).resolve().parent / "cfg" / f"train_flow_{seed:08x}.rou.xml")
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     rnd = random.Random(seed)

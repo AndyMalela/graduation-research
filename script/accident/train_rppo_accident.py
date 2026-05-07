@@ -5,6 +5,8 @@ Stable KL-adaptive LR, entropy decay, and high-demand stress testing.
 """
 
 import os, random, torch, numpy as np, multiprocessing
+from pathlib import Path
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 from sb3_contrib import RecurrentPPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
@@ -33,7 +35,7 @@ print(f"[INFO] Using ROUTE_FILE={ROUTE_FILE}, SEED={SEED_FOR_ROUTE}")
 def make_env(seed=None):
     def _init():
         env = GongguanRoundaboutEnv(
-            sumo_cfg_path=r"C:/Users/gr0664rx/RLProjects/GongguanRoundabout/cfg/gongguanacc.sumocfg",
+            sumo_cfg_path=str(_PROJECT_ROOT / "cfg" / "gongguanacc.sumocfg"),
             route_file=ROUTE_FILE,
             gui=False,
             accident=True,

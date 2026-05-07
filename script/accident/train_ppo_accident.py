@@ -1,4 +1,6 @@
 import os, multiprocessing, random, torch, numpy as np
+from pathlib import Path
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 from stable_baselines3 import PPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
@@ -25,7 +27,7 @@ print(f"[INFO] PPO Baseline Accident Training ROUTE_FILE: {ROUTE_FILE}")
 def make_env(seed=None):
     def _init():
         env = GongguanRoundaboutEnv(
-            sumo_cfg_path=r"C:\Users\gr0664rx\RLProjects\GongguanRoundabout\cfg\gongguanacc.sumocfg",
+            sumo_cfg_path=str(_PROJECT_ROOT / "cfg" / "gongguanacc.sumocfg"),
             route_file=ROUTE_FILE,
             gui=False,
             accident=True,
